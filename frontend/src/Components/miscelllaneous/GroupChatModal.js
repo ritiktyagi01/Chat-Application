@@ -5,6 +5,7 @@ import { ChatState } from "../../Context/ChatProvider";
 import axios from "axios";
 import UserListItem from "../useAvatar/userListItem";
 import UserBadgeItem from "../useAvatar/UserBadgeItem";
+import API_URL from "../../config/api";
 const GroupChatModal = ({ children }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [groupChatName, setGroupChatName] = useState("");
@@ -24,7 +25,7 @@ const GroupChatModal = ({ children }) => {
             const config = {
                 headers: { Authorization: `Bearer ${user.token}` }
             };
-            const { data } = await axios.get(`http://localhost:5000/api/user?search=${query}`, config);
+            const { data } = await axios.get(`${API_URL}/api/user?search=${query}`, config);
             setLoading(false);
             setSearchResult(data);
         } catch (error) {
@@ -55,7 +56,7 @@ const GroupChatModal = ({ children }) => {
                     Authorization: `Bearer ${user.token}`,
                 }
             };
-            const { data } = await axios.post("http://localhost:5000/api/chat/group", {
+            const { data } = await axios.post("${API_URL}/api/chat/group", {
                 name: groupChatName,
                 users: JSON.stringify(selectedUsers.map((u) => u._id)),
             }, config);

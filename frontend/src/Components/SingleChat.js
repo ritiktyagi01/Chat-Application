@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { ArrowBackIcon, ViewIcon } from "@chakra-ui/icons";
 import axios from "axios";
+import API_URL from "../config/api";
 
 import { ChatState } from "../Context/ChatProvider";
 import { getSender, getSenderFull } from "../config/ChatLogic";
@@ -20,7 +21,7 @@ import UpdateGroupChatModel from "./miscelllaneous/UpdateGroupChatModel";
 import "./style.css";
 import io from "socket.io-client";
 
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = `${API_URL}`;
 var socket, selectedChatCompare;
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const { user, selectedChat, setSelectedChat, notifications, setNotifications } = ChatState();
@@ -42,7 +43,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       };
       setLoading(true);
       const { data } = await axios.get(
-        `http://localhost:5000/api/message/${selectedChat._id}`,
+        `${API_URL}/api/message/${selectedChat._id}`,
         config
       );
       setMessages(data);
@@ -102,7 +103,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         };
         setNewMessage("");
         const { data } = await axios.post(
-          "http://localhost:5000/api/message",
+          "${API_URL}/api/message",
           {
             content: newMessage,
             chatId: selectedChat._id,

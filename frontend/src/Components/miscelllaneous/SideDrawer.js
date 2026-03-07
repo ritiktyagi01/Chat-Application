@@ -9,6 +9,7 @@ import axios from 'axios';
 import ChatLoading from "../ChatLoading";
 import UserListItem from "../useAvatar/userListItem";
 import NotificationBadge from '@parthamk/notification-badge';
+import API_URL from "../../config/api";
 const SideDrawer = () => {
     const [search, setSearch] = useState("");
     const [searchResult, setSearchResult] = useState([]);
@@ -39,7 +40,7 @@ const SideDrawer = () => {
             const config = {
                 headers: { Authorization: `Bearer ${user.token}`, }
             };
-            const { data } = await axios.get(`http://localhost:5000/api/user?search=${search}`, config)
+            const { data } = await axios.get(`${API_URL}/api/user?search=${search}`, config)
             setLoading(false);
             setSearchResult(data);
         } catch (error) {
@@ -63,7 +64,7 @@ const SideDrawer = () => {
                     Authorization: `Bearer ${user.token}`,
                 }
             };
-            const { data } = await axios.post("http://localhost:5000/api/chat", { userId }, config);
+            const { data } = await axios.post("${API_URL}/api/chat", { userId }, config);
             if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
             setSelectedChat(data);
             setLoadingChat(false);

@@ -7,6 +7,7 @@ import { ChatState } from "../../Context/ChatProvider";
 import UserBadgeItem from "../useAvatar/UserBadgeItem";
 import axios from "axios";
 import UserListItem from "../useAvatar/userListItem";
+import API_URL from "../../config/api";
 
 
 const UpdateGroupChatModel = ({fetchAgain, setFetchAgain,fetchMessages}) => {
@@ -39,7 +40,7 @@ const UpdateGroupChatModel = ({fetchAgain, setFetchAgain,fetchMessages}) => {
             },
         };
         const { data } = await axios.put(
-            "http://localhost:5000/api/chat/groupremove",
+            "${API_URL}/api/chat/groupremove",
             {
                 chatId: selectedChat._id,
                 userId: user1._id,
@@ -102,7 +103,7 @@ const UpdateGroupChatModel = ({fetchAgain, setFetchAgain,fetchMessages}) => {
             };
 
             const response = await axios.put(
-                "http://localhost:5000/api/chat/groupadd",
+                "${API_URL}/api/chat/groupadd",
                 {
                     chatId: selectedChat._id,
                     userId: user1._id,
@@ -153,7 +154,7 @@ const UpdateGroupChatModel = ({fetchAgain, setFetchAgain,fetchMessages}) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const response = await axios.put("http://localhost:5000/api/chat/rename", {
+            const response = await axios.put("${API_URL}/api/chat/rename", {
                 chatId: selectedChat?._id,
                 chatName: groupChatName,
             },
@@ -187,7 +188,7 @@ const UpdateGroupChatModel = ({fetchAgain, setFetchAgain,fetchMessages}) => {
                 },
             };
 
-            const response = await axios.get(`http://localhost:5000/api/user?search=${query}`, config);
+            const response = await axios.get(`${API_URL}/api/user?search=${query}`, config);
 
             if (response && response.data) {
                 console.log(response.data);
