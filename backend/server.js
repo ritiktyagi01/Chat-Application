@@ -5,9 +5,14 @@ const dotenv = require("dotenv");
 dotenv.config();
 const cors = require('cors');
 const connectDB = require("./config/db.js");
+
+
 app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials: true,
+  origin: [
+    "http://localhost:3000",
+    "https://chat-application-eight-lovat.vercel.app"
+  ],
+  credentials: true
 }));
 
 const userRoutes = require("./routes/userRoutes");
