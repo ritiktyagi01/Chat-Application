@@ -1,8 +1,9 @@
-import React from "react";
+import React from 'react'
+
 const ChatLoading = () => {
-    return
-    <>
-        kya haal hai
-    </>
-};
-export default ChatLoading;
+  return (
+    <div>Kya Haal Hai</div>
+  )
+}
+
+export default ChatLoading
