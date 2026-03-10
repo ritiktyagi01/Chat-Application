@@ -62,7 +62,8 @@ const Login = () => {
         position: "bottom",
       });
 
-      localStorage.setItem("userInfo", JSON.stringify(data));
+       localStorage.setItem("userInfo", JSON.stringify(data));
+      // localStorage.setItem("token", token);
 
       setLoading(false);
       navigate("/chats");

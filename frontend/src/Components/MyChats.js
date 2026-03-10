@@ -20,6 +20,7 @@ const MyChats = ({ fetchAgain }) => {
           Authorization: `Bearer ${user.token}`,
         },
       };
+     
 
       const { data } = await axios.get(`${API_URL}/api/chat`, config);
       setChats(data);
