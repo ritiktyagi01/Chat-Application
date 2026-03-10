@@ -3,17 +3,12 @@ const app = express();
 //const chats = require("./data/data.js")
 const dotenv = require("dotenv");
 dotenv.config();
-const cors = require('cors');
+
 const connectDB = require("./config/db.js");
 
 
-app.use(cors({
-  origin: [
-    "http://localhost:3000",
-    "https://chat-application-eight-lovat.vercel.app"
-  ],
-  credentials: true
-}));
+const cors = require("cors");
+app.use(cors());
 
 const userRoutes = require("./routes/userRoutes");
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
