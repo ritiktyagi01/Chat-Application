@@ -24,7 +24,7 @@ const MyChats = ({ fetchAgain }) => {
 
       const { data } = await axios.get(`${API_URL}/api/chat`, config);
       
-console.log("API_URL:", API_URL); // Log the API_URL value to the console
+// console.log("API_URL:", API_URL); // Log the API_URL value to the console
 
       setChats(data);
 
